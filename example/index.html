@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="example">
+<head>
+  <meta charset="UTF-8">
+  <title>MakeAPI angular</title>
+  <link href="https://stuff.webmaker.org/makerstrap/latest/makerstrap.complete.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="form-group" ng-init="makeId='539f56c3522cf67163000154'">
+      <label for="make-id">Make ID</label>
+      <input name="make-id" class="form-control" ng-model="makeId">
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <make make-id="{{makeId}}"></make>
+      </div>
+    </div>
+
+    <make-gallery class="row" tags="['puppy']">
+      <div class="col-sm-3" ng-repeat="make in makes">
+        <make make-data="make"></make>
+      </div>
+    </make-gallery>
+
+
+  </div>
+
+
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/makeapi-client/src/make-api.js"></script>
+  <script src="/dist/makeapi-angular.templates.js"></script>
+  <script src="/src/makeapi-angular.js"></script>
+  <script>
+  var module = angular.module('example', ['wmMakeApiAngular']);
+  </script>
+</body>
+</html>
