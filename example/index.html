@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <title>MakeAPI angular</title>
   <link href="https://stuff.webmaker.org/makerstrap/latest/makerstrap.complete.min.css" rel="stylesheet">
+  <style>
+    /* move this stuff into a real stylesheet, merge relevant parts in makerstrap */
+    .thumbnail {
+      border: 1px solid #DDD;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,7 +20,7 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <make id="whatever" make="{{makeId}}"></make>
+        <make id="whatever" make-id="{{makeId}}"></make>
       </div>
       <div class="col-sm-3">
         <make id="{{makeId}}"></make>

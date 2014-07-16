@@ -23,7 +23,7 @@ module.directive('make', [ 'makeApi', 'makeApiAngularTemplates',
       replace: true,
       scope: {
         id: '@',
-        make: '@'
+        makeId: '@'
       },
       template: templates['make.html'],
       link: function (scope, element, attrs) {
@@ -33,7 +33,7 @@ module.directive('make', [ 'makeApi', 'makeApiAngularTemplates',
               return;
             }
             // Ignore ID if makeId is set
-            if (scope.make && scope.make !== val) {
+            if (scope.makeId && scope.makeId !== val) {
               return;
             }
             makeApi
