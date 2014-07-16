@@ -21,54 +21,75 @@ module.directive('make', [ 'makeApi', 'makeApiAngularTemplates',
     return {
       restrict: 'EA',
       replace: true,
-      template: templates['make.html'],
       scope: {
-        makeId: '@'
+        id: '@',
+        make: '@'
       },
+      template: templates['make.html'],
       link: function (scope, element, attrs) {
-        scope.$watch('makeId', function (val) {
-          if (!val) {
-            return;
-          }
-          makeApi
-            .id(val)
-            .get()
-            .success(function (data) {
-              scope.make = data.makes[0] || {};
-            });
+        ['id', 'makeId'].forEach(function (attr) {
+          scope.$watch(attr, function (val) {
+            if (!val) {
+              return;
+            }
+            // Ignore ID if makeId is set
+            if (scope.make && scope.make !== val) {
+              return;
+            }
+            makeApi
+              .id(val)
+              .get()
+              .success(function (data) {
+                scope.make = data.makes[0] || {};
+              });
+          });
         });
       }
     };
 }]);
 
-module.directive('makeGallery', [ 'makeApi',
-  function (wmMakeApi) {
+module.directive('makeData', [ 'makeApiAngularTemplates',
+  function (templates) {
+    return {
+      restrict: 'A',
+      require: '^makeGallery',
+      replace: true,
+      template: templates['make.html'],
+      link: function (scope, element, attrs, ctrl) {
+        //
+      }
+    };
+}]);
+
+module.directive('makeGallery', ['makeApiAngularTemplates',
+  function (templates) {
     return {
       restrict: 'EA',
       transclude: true,
-      template: '<div ng-transclude></div>',
+      template: templates['make-gallery.html'],
       scope: {
         tags: '=',
-        makeList: '@getList',
         ids: '=',
-        limit: '@'
+        limit: '@',
+        makeList: '@getList',
+        containerClass: '@'
       },
-      link: function (scope, element, attrs, ctrl, transclude) {
-        function watch(attr) {
-          scope.test = 'test';
-          scope.$watch(attr, function (val) {
+      controller: ['$scope', 'makeApi', function ($scope, makeApi) {
+        // Watch and update
+        ['tags', 'getList', 'ids'].forEach(function (attr) {
+          $scope.$watch(attr, function (val) {
             if (!val) {
               return;
             }
-            wmMakeApi[attr](val)
-              .limit(scope.limit || 20)
+            makeApi[attr](val)
+              .limit($scope.limit || 20)
               .get()
               .success(function (data) {
-                scope.makes = data.makes;
+                $scope.makes = data.makes;
               });
           });
-        }
-        ['tags', 'getList', 'ids'].forEach(watch);
-      }
+        });
+
+      }]
     };
 }]);

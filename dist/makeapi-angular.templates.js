@@ -1,5 +1,10 @@
 var makeApiAngularTemplates = {};
 
+makeApiAngularTemplates["make-gallery.html"] = "<div ng-class=\"containerClass\" ng-repeat=\"make in makes\">\n" +
+  "  <div make-data=\"make\"></div>\n" +
+  "</div>\n" +
+  "";
+
 makeApiAngularTemplates["make.html"] = "<div class=\"make thumbnail\">\n" +
   "  <div class=\"thumbnail-wrapper\" ng-style=\"{'background-image':'url(' + make.thumbnail + ')'}\"></div>\n" +
   "  <div class=\"caption\">\n" +

@@ -14,20 +14,20 @@
 
     <div class="row">
       <div class="col-sm-3">
-        <make make-id="{{makeId}}"></make>
+        <make id="whatever" make="{{makeId}}"></make>
+      </div>
+      <div class="col-sm-3">
+        <make id="{{makeId}}"></make>
       </div>
     </div>
 
-    <make-gallery class="row" tags="['puppy']">
-      <div class="col-sm-3" ng-repeat="make in makes">
-        <make make-data="make"></make>
-      </div>
+    <make-gallery
+      class="row"
+      tags="['puppy']"
+      container-class="col-sm-3">
     </make-gallery>
 
-
   </div>
-
-
 
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/makeapi-client/src/make-api.js"></script>
