@@ -5,33 +5,66 @@
   <title>MakeAPI angular</title>
   <link href="https://stuff.webmaker.org/makerstrap/latest/makerstrap.complete.min.css" rel="stylesheet">
   <style>
+    .jumbotron {
+      background: #F5F5F5;
+      color: #555;
+      border-bottom: 1px solid #DDD;
+    }
     /* move this stuff into a real stylesheet, merge relevant parts in makerstrap */
     .thumbnail {
       border: 1px solid #DDD;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="form-group" ng-init="makeId='539f56c3522cf67163000154'">
-      <label for="make-id">Make ID</label>
-      <input name="make-id" class="form-control" ng-model="makeId">
+<body ng-controller="mainCtrl">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>MakeAPI Angular</h1>
     </div>
-
+  </div>
+  <div class="container">
+    <h2 class="page-header">Individual makes</h2>
     <div class="row">
       <div class="col-sm-3">
+        <div class="form-group">
+          <label for="make-id">Make ID</label>
+          <input name="make-id" class="form-control" ng-model="makeId">
+        </div>
         <make id="whatever" make-id="{{makeId}}"></make>
       </div>
       <div class="col-sm-3">
-        <make id="{{makeId}}"></make>
+        <div class="form-group">
+          <label for="make-id">Make ID</label>
+          <input name="make-id" class="form-control" ng-model="makeId2">
+        </div>
+        <make id="{{makeId2}}"></make>
       </div>
     </div>
 
-    <make-gallery
+    <h2 class="page-header">Make Gallery</h2>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <div class="input-group">
+            <input name="tags" class="form-control" ng-model="tagsInput">
+            <span class="input-group-btn">
+              <button ng-click="updateTags(tagsInput)" class="btn btn-default">
+                Update
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div make-gallery
       class="row"
-      tags="['puppy']"
-      container-class="col-sm-3">
-    </make-gallery>
+      tags="tags"
+      limit="4"
+      container-class="col-sm-4 col-md-3">
+    </div>
 
   </div>
 
@@ -41,6 +74,18 @@
   <script src="/src/makeapi-angular.js"></script>
   <script>
   var module = angular.module('example', ['wmMakeApiAngular']);
+  module.controller('mainCtrl', function ($scope) {
+    $scope.makeId = '539f56c3522cf67163000154';
+    $scope.makeId2 = '539f56c3522cf67163000154';
+    $scope.tagsInput = 'love';
+    $scope.tags = ['love'];
+    $scope.updateTags = function (input) {
+      if (!input) {
+        return;
+      }
+      $scope.tags = input.split(/[\s,]+/);
+    };
+  });
   </script>
 </body>
 </html>
