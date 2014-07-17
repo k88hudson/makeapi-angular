@@ -8,11 +8,9 @@ bower install makeapi-angular
 
 ## Setup
 
-```
 1. Add makerstap in your head `<link rel="stylsheet" href="bower_components/makerstrap/dist/makerstrap.complete.min.css"`. There are other ways to do this -- see the makerstrap docs.
 2. Make sure `angular.js`, `makeapi-client.js`, `makeapi-angular.js` and `makapi-angular.templates.js` are all added to your document.
 3. Add the `wmMakeApiAngular` module to your angular app.
-```
 
 ## Directives
 
