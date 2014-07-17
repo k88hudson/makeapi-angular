@@ -72,6 +72,8 @@ module.directive('makeGallery', function () {
         containerClass: '@'
       },
       controller: ['$scope', 'makeApi', function ($scope, makeApi) {
+        // Default
+        $scope.containerClass = $scope.containerClass || 'col-sm-4 col-md-3';
         // Watch and update
         ['tags', 'getList', 'ids'].forEach(function (attr) {
           $scope.$watch(attr, function (val) {
