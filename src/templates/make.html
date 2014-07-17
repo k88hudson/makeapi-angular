@@ -1,9 +1,9 @@
-<div class="make thumbnail">
-  <div class="thumbnail-wrapper" ng-style="{'background-image':'url(' + make.thumbnail + ')'}"></div>
+<div class="make">
+  <div class="make-thumbnail" ng-style="{'background-image':'url(' + make.thumbnail + ')'}"></div>
   <div class="caption">
-    <h3>{{make.title}}</h3>
-    <p class="text-muted">Created by @{{make.username}}</p>
-    <p>{{make.description}}</p>
+    <h3 class="make-title">{{make.title}}</h3>
+    <p class="make-author text-muted">By @{{make.username}}</p>
+    <p class="make-description">{{make.description}}</p>
     <p>
       <a href="{{make.remixUrl}}" class="btn btn-primary" role="button">
         <span class="fa fa-code-fork"></span> Remix

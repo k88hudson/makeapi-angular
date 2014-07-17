@@ -5,12 +5,12 @@ makeApiAngularTemplates["make-gallery.html"] = "<div ng-class=\"containerClass\"
   "</div>\n" +
   "";
 
-makeApiAngularTemplates["make.html"] = "<div class=\"make thumbnail\">\n" +
-  "  <div class=\"thumbnail-wrapper\" ng-style=\"{'background-image':'url(' + make.thumbnail + ')'}\"></div>\n" +
+makeApiAngularTemplates["make.html"] = "<div class=\"make\">\n" +
+  "  <div class=\"make-thumbnail\" ng-style=\"{'background-image':'url(' + make.thumbnail + ')'}\"></div>\n" +
   "  <div class=\"caption\">\n" +
-  "    <h3>{{make.title}}</h3>\n" +
-  "    <p class=\"text-muted\">Created by @{{make.username}}</p>\n" +
-  "    <p>{{make.description}}</p>\n" +
+  "    <h3 class=\"make-title\">{{make.title}}</h3>\n" +
+  "    <p class=\"make-author text-muted\">By @{{make.username}}</p>\n" +
+  "    <p class=\"make-description\">{{make.description}}</p>\n" +
   "    <p>\n" +
   "      <a href=\"{{make.remixUrl}}\" class=\"btn btn-primary\" role=\"button\">\n" +
   "        <span class=\"fa fa-code-fork\"></span> Remix\n" +

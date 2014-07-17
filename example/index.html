@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>MakeAPI angular</title>
-  <link href="https://stuff.webmaker.org/makerstrap/latest/makerstrap.complete.min.css" rel="stylesheet">
+  <link href="/bower_components/makerstrap/dist/makerstrap.complete.min.css" rel="stylesheet">
   <style>
     .jumbotron {
       background: #F5F5F5;
       color: #555;
       border-bottom: 1px solid #DDD;
-    }
-    /* move this stuff into a real stylesheet, merge relevant parts in makerstrap */
-    .thumbnail {
-      border: 1px solid #DDD;
     }
   </style>
 </head>
@@ -62,7 +58,7 @@
     <div make-gallery
       class="row"
       tags="tags"
-      limit="4"
+      limit="20"
       container-class="col-sm-4 col-md-3">
     </div>
 
