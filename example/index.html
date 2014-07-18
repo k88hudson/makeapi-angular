@@ -26,14 +26,14 @@
           <label for="make-id">Make ID</label>
           <input name="make-id" class="form-control" ng-model="makeId">
         </div>
-        <make id="whatever" make-id="{{makeId}}"></make>
+        <make make-id="{{makeId}}"></make>
       </div>
       <div class="col-sm-4 col-md-3">
         <div class="form-group">
           <label for="make-id">Make ID</label>
           <input name="make-id" class="form-control" ng-model="makeId2">
         </div>
-        <make id="{{makeId2}}"></make>
+        <div make make-id="{{makeId2}}"></div>
       </div>
     </div>
 
@@ -58,7 +58,7 @@
     <div make-gallery
       class="row"
       tags="tags"
-      limit="20">
+      limit="12">
     </div>
 
   </div>
@@ -71,7 +71,7 @@
   var module = angular.module('example', ['wmMakeApiAngular']);
   module.controller('mainCtrl', function ($scope) {
     $scope.makeId = '539f56c3522cf67163000154';
-    $scope.makeId2 = '539f56c3522cf67163000154';
+    $scope.makeId2 = '52231a77850da0743d000044';
     $scope.tagsInput = 'love';
     $scope.tags = ['love'];
     $scope.updateTags = function (input) {

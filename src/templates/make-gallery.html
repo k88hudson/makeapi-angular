@@ -1,3 +1,4 @@
-<div ng-class="containerClass" ng-repeat="make in makes">
+<div ng-class="containerClass || 'col-sm-4 col-md-3'" ng-repeat="make in makes">
+  {{containerClass}}
   <div make-data="make"></div>
 </div>

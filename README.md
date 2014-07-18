@@ -16,10 +16,9 @@ bower install makeapi-angular
 
 ### Make
 
-To create an individal make, just add a `make` element with an `id` attribute. Alternatively, you can use the `make-id` attribute.
+To create an individal make, just add a `make` element with a `make-id` attribute.
 
 ```html
-<make id="539f56c3522cf67163000154"></make>
 <make make-id="539f56c3522cf67163000154"></make>
 ```
 

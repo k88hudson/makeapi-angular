@@ -21,27 +21,25 @@ module.directive('make', [ 'makeApi',
       restrict: 'EA',
       replace: true,
       scope: {
-        id: '@',
         makeId: '@'
       },
       templateUrl: 'make.html',
       link: function (scope, element, attrs) {
-        ['id', 'makeId'].forEach(function (attr) {
-          scope.$watch(attr, function (val) {
-            if (!val) {
-              return;
-            }
-            // Ignore ID if makeId is set
-            if (scope.makeId && scope.makeId !== val) {
-              return;
-            }
-            makeApi
-              .id(val)
-              .get()
-              .success(function (data) {
-                scope.make = data.makes[0] || {};
-              });
-          });
+        scope.$watch('makeId', function (val) {
+          if (!val) {
+            return;
+          }
+          // Ignore ID if makeId is set
+          if (scope.makeId && scope.makeId !== val) {
+            return;
+          }
+          makeApi
+            .id(val)
+            .get()
+            .success(function (data) {
+              scope.make = data.makes[0] || {};
+            });
+
         });
       }
     };
