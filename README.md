@@ -3,7 +3,7 @@
 ## Install
 
 ```
-bower install makeapi-angular
+bower install k88hudson/makeapi-angular
 ```
 
 ## Setup
