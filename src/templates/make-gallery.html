@@ -1,3 +1,3 @@
 <div ng-class="containerClass || 'col-sm-4 col-md-3'" ng-repeat="make in makes">
-  <div make-data="make"></div>
+  <div user_id="{{ userId }}" csrf_token="{{ csrfToken }}" make-data="{{ make }}"></div>
 </div>

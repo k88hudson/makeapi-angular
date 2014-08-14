@@ -1,16 +1,18 @@
-  <div id="make-{{make._id}}" class="make">
+<div id="make-{{make._id}}" class="make">
   <div class="make-thumbnail" ng-style="{'background-image':'url(' + make.thumbnail + ')'}"></div>
   <div class="caption">
     <h3 class="make-title">{{make.title}}</h3>
     <p class="make-author text-muted">By @{{make.username}}</p>
     <p class="make-description">{{make.description}}</p>
     <p>
-      <a href="{{make.remixurl}}" class="btn btn-primary" role="button">
-        <span class="fa fa-code-fork"></span> Remix
-      </a>
-      <a href="{{make.url}}" class="btn btn-info" role="button">
-        Details
-      </a>
+    <a href="{{make.remixurl}}" class="btn btn-primary" role="button">
+      <span class="fa fa-code-fork"></span> Remix
+    </a>
+    <a href="{{make.url}}" class="btn btn-info" role="button">
+      Details
+    </a>
+
+    <span class="make-like-toggle details-page-icon make-like-details" ng-click="toggleLike()" ng-class="{ 'fa fa-heart': +liked, 'fa fa-heart-o': !+liked }" ></span>
     </p>
   </div>
 </div>
