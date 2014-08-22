@@ -10,7 +10,7 @@ module.provider('makeApi', function makeapiProvider() {
     make.get = function get() {
       var querystring = this.queryPairs.join( "&" )
       this.queryPairs = [];
-      return $http.get(this.apiURL + this.searchPath + '?' + querystring);
+      return $http.get(this.apiURL + this.searchPath + '?' + querystring, { 'headers': {'X-CSRF-Token': undefined} });
     };
     return make;
   }];
