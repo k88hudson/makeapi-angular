@@ -27,16 +27,22 @@ module.directive('make', [ 'makeApi',
       },
       templateUrl: 'make.html',
       controller: ['$scope', '$http', function($scope, $http) {
+
         $scope.toggleLike = function() {
           if (!$scope.liked) {
-            $http.post('/like', { makeID: $scope.make._id });
-            $scope.liked = true;
+            $http.post('/like', { makeID: $scope.make._id }).success(function(data, status, headers, config) {
+              $scope.liked = true;
+            }).error(function(data, status, headers, config) {
+              $scope.likeError = data;
+            });
           } else {
-            $http.post('/unlike', { makeID: $scope.make._id });
-            $scope.liked =false;
+            $http.post('/unlike', { makeID: $scope.make._id }).success(function(data, status, headers, config) {
+              $scope.liked = false;
+            }).error(function(data, status, headers, config) {
+              $scope.likeError = data;
+            });
           }
         }
-
 
         $scope.$watch('makeId', function (val) {
           if (!val) {
@@ -81,11 +87,17 @@ module.directive('makeData', function () {
 
       $scope.toggleLike = function() {
         if (!$scope.liked) {
-          $http.post('/like', { makeID: $scope.make._id });
-          $scope.liked = true;
+          $http.post('/like', { makeID: $scope.make._id }).success(function(data, status, headers, config) {
+            $scope.liked = true;
+          }).error(function(data, status, headers, config) {
+            $scope.likeError = data;
+          });
         } else {
-          $http.post('/unlike', { makeID: $scope.make._id });
-          $scope.liked = false;
+          $http.post('/unlike', { makeID: $scope.make._id }).success(function(data, status, headers, config) {
+            $scope.liked = false;
+          }).error(function(data, status, headers, config) {
+            $scope.likeError = data;
+          });
         }
       }
 

@@ -26,6 +26,9 @@ angular.module("make.html", []).run(["$templateCache", function($templateCache) 
     "\n" +
     "    <span class=\"make-like-toggle details-page-icon make-like-details\" ng-click=\"toggleLike()\" ng-class=\"{ 'fa fa-heart': +liked, 'fa fa-heart-o': !+liked }\" ></span>\n" +
     "    </p>\n" +
+    "    <div class=\"text-danger\">\n" +
+    "      {{ likeError }}\n" +
+    "    </div>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");
