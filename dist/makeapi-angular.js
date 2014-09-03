@@ -26,8 +26,7 @@ module.directive('make', [ 'makeApi',
         userId: '@',
       },
       templateUrl: 'make.html',
-      controller: ['$scope', '$http', function($scope, $http) {
-
+      controller: ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
         $scope.toggleLike = function() {
           if (!$scope.liked) {
             $http.post('/like', { makeID: $scope.make._id }).success(function(data, status, headers, config) {
@@ -44,6 +43,7 @@ module.directive('make', [ 'makeApi',
           }
         }
 
+
         $scope.$watch('makeId', function (val) {
           if (!val) {
             return;
@@ -59,6 +59,8 @@ module.directive('make', [ 'makeApi',
               $scope.make = data.makes[0] || {};
 
               $scope.liked = +$scope.make.likes.some(function(item){ return item.userId && item.userId == $scope.userId; });
+
+              $rootScope.$broadcast('makeLoad', { make: $scope.make });
             });
         });
       }]
@@ -75,7 +77,7 @@ module.directive('makeData', function () {
       makeData: '@',
       userId: '@',
     },
-    controller: ['$scope', '$http', function($scope, $http) {
+    controller: ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
       $scope.$watch('makeData', function (val) {
         if (!val) {
           return;
@@ -83,6 +85,8 @@ module.directive('makeData', function () {
 
         $scope.make = JSON.parse(val);
         $scope.liked = +$scope.make.likes.some(function(item){ return item.userId && item.userId == $scope.userId; });
+
+        $rootScope.$broadcast('makeLoad', { make: $scope.make });
       });
 
       $scope.toggleLike = function() {
