@@ -1,8 +1,16 @@
-<div id="make-{{make._id}}" class="make">
-  <div class="make-thumbnail" ng-style="{'background-image':'url(' + make.thumbnail + ')'}"></div>
+<article id="make-{{make._id}}" class="make">
+  <a href="{{ make.url }}">
+    <div class="make-thumbnail" ng-style="{'background-image':'url(' + make.thumbnail + ')'}"></div>    
+  </a>
   <div class="caption">
-    <h3 class="make-title">{{make.title}}</h3>
-    <p class="make-author text-muted">By @{{make.username}}</p>
+    <a href="{{ make.url }}">
+      <h3 class="make-title">{{make.title}}</h3>      
+    </a>
+    <a href="/user/{{ make.username }}/">
+      <img class="data-avatar pull-left" alt="{{ make.username }}"
+           ng-src="https://secure.gravatar.com/avatar/{{ make.emailHash }}?s=44&d=https%3A%2F%2Fstuff.webmaker.org%2Favatars%2Fwebmaker-avatar-44x44.png"/>
+      <p class="make-author text-muted">By @{{make.username}}</p>
+    </a>
     <p class="make-description">{{make.description}}</p>
     <p>
     <a href="{{make.remixurl}}" class="btn btn-primary" role="button">
@@ -18,4 +26,4 @@
       {{ likeError }}
     </div>
   </div>
-</div>
+</article>
