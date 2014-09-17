@@ -116,6 +116,7 @@ module.directive('makeGallery', function () {
       templateUrl: 'make-gallery.html',
       scope: {
         tags: '=',
+        user: '=',
         ids: '=',
         limit: '@',
         makeList: '@getList',
@@ -125,7 +126,7 @@ module.directive('makeGallery', function () {
       },
       controller: ['$scope', 'makeApi', function ($scope, makeApi) {
         // Watch and update
-        ['tags', 'getList', 'ids'].forEach(function (attr) {
+        ['tags', 'getList', 'ids', 'user'].forEach(function (attr) {
           $scope.$watch(attr, function (val) {
             if (!val) {
               return;
